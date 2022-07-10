@@ -60,7 +60,7 @@ app.get("/compose", function (req, res) {
   res.render("compose");
 });
 
-// Add blogPost to Database
+// Add BlogPost to Database
 
 app.post("/compose", function (req, res) {
   const myblogpost = new Blogpost({
@@ -71,19 +71,21 @@ app.post("/compose", function (req, res) {
   res.redirect("/compose");
 });
 
-// Render blogPost pages
+// Render BlogPost pages
 
 app.get("/posts/:postName", function (req, res) {
   const urlEntered = req.params.postName.trim();
   Blogpost.find({ _id: urlEntered }, (err, foundPost) => {
     if (!err) {
       //console.log(foundPost);
-      res.render("post", {blogPost: foundPost[0]});
+      res.render("post", { blogPost: foundPost[0] });
     } else {
       res.render("404");
     }
   });
 });
+
+// Handle invalid request
 
 app.get("/:nonsense", function (req, res) {
   res.render("404");
@@ -93,6 +95,4 @@ app.get("/:nonsense", function (req, res) {
 
 const port = 3001;
 
-app.listen(port)
-
-// this is so cool boi
+app.listen(port);
