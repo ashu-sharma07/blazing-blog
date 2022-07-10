@@ -15,7 +15,7 @@
 <h1><%= blogPost.postTitle %></h1>
 <p>
   <%=blogPost.postContent.slice(0, 325)+" ..." %>
-  <a href="/posts/<%= blogPost.postTitle %> ">Read More</a>
+  <a href="/posts/<%= blogPost._id %> ">Read More</a>
 </p>
 
 <% }); %> <%- include('partials/footer'); -%>

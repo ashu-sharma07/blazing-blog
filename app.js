@@ -73,20 +73,12 @@ app.post("/compose", function (req, res) {
 // Render blogPost pages
 
 app.get("/posts/:postName", function (req, res) {
-  const urlEntered = _.lowerCase(req.params.postName);
-  let notPageFound = true;
-  blogPosts.forEach((blogPost) => {
-    let blogPostTitle = _.lowerCase(blogPost.postTitle);
-    if (blogPostTitle === urlEntered) {
-      // console.log("Match Found");
-      res.render("post", { blogPost: blogPost });
-      notPageFound = false;
-      return 0;
-    }
+  const urlEntered = req.params.postName.trim();
+  console.log(urlEntered);
+  Blogpost.find({}, (err, foundPost)=>{
+    console.log(foundPost);
   });
-  if (notPageFound) {
-    res.render("404");
-  }
+  res.render("404");
 });
 
 app.get("/:nonsense", function(req, res){
