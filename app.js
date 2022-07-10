@@ -76,7 +76,7 @@ app.get("/posts/:postName", function (req, res) {
   const urlEntered = req.params.postName.trim();
   Blogpost.find({ _id: urlEntered }, (err, foundPost) => {
     if (!err) {
-      console.log(foundPost);
+      //console.log(foundPost);
       res.render("post", {blogPost: foundPost[0]});
     } else {
       res.render("404");
