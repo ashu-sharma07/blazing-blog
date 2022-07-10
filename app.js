@@ -74,17 +74,19 @@ app.post("/compose", function (req, res) {
 
 app.get("/posts/:postName", function (req, res) {
   const urlEntered = req.params.postName.trim();
-  console.log(urlEntered);
-  Blogpost.find({}, (err, foundPost)=>{
-    console.log(foundPost);
+  Blogpost.find({ _id: urlEntered }, (err, foundPost) => {
+    if (!err) {
+      console.log(foundPost);
+      res.render("post", {blogPost: foundPost[0]});
+    } else {
+      res.render("404");
+    }
   });
-  res.render("404");
 });
 
-app.get("/:nonsense", function(req, res){
+app.get("/:nonsense", function (req, res) {
   res.render("404");
 });
-
 
 // Listening for HTTPs request on the specific port
 
@@ -94,4 +96,4 @@ app.listen(port, function () {
   console.log(`Server started on port ${port}`);
 });
 
-// this is so cool boi 
+// this is so cool boi
