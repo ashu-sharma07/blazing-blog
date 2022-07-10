@@ -89,6 +89,11 @@ app.get("/posts/:postName", function (req, res) {
   }
 });
 
+app.get("/:nonsense", function(req, res){
+  res.render("404");
+});
+
+
 // Listening for HTTPs request on the specific port
 
 const port = 3000;
