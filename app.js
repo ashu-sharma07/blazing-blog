@@ -12,9 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Database Integration
-
-const databaseUrl = "mongodb://localhost:27017/blogpostDB";
-mongoose.connect(databaseUrl);
+const password = "a1s2h3u4";
+mongoose.connect(
+  `mongodb+srv://ashusharma07:${password}@cluster0.j5rug.mongodb.net/blogpostDB`
+);
 
 // Schema for blogPost
 
@@ -90,10 +91,8 @@ app.get("/:nonsense", function (req, res) {
 
 // Listening for HTTPs request on the specific port
 
-const port = 3000;
+const port = 3001;
 
-app.listen(port, function () {
-  console.log(`Server started on port ${port}`);
-});
+app.listen(port)
 
 // this is so cool boi
